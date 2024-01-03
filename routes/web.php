@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\MahasiswaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +16,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::middleware(['auth'])->group(function (){
+    Route::get('dashboard-mhs', [MahasiswaController::class, 'index'])->name('mahasiswa.dashboard');
 });
+
+Route::get('/', [RegisterController::class, 'index']);
+Route::get('/login', [LoginController::class, 'index']);
+
+Route::get('/login-mahasiswa', [LoginController::class, 'loginMahasiswa']);
+Route::any('/login', [LoginController::class, 'authenticate']);
+
+Route::get('/register-mahasiswa', [RegisterController::class, 'create']);
+Route::post('/create-user', [RegisterController::class, 'store']);
