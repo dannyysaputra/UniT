@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Ukm;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -11,6 +12,10 @@ class RegisterController extends Controller
 {
     public function create() {
         return view('mahasiswa.auth.register');
+    }
+
+    public function registUkm() {
+        return view('ukm.auth.register');
     }
 
     public function index() {

@@ -38,7 +38,7 @@
                         <div class="sidebar-link-text">Event</div>
                     </div>
                 </li>
-                <div class="sidebar-logout" onclick="location.href='login_2.html'">
+                <div class="sidebar-logout" onclick="location.href='/logout'">
                     <div class="sidebar-logout-icon">
                         Log out
                     </div>

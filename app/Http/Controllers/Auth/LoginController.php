@@ -16,6 +16,10 @@ class LoginController extends Controller
         return view('mahasiswa.auth.login');
     }
 
+    public function loginUkm() {
+        return view('ukm.auth.login');
+    }
+
     public function authenticate(Request $request) {
         $credentials = $request->validate(
             [
