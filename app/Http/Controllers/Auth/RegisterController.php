@@ -26,13 +26,17 @@ class RegisterController extends Controller
         $validated = $request->validate([
             'nama' => 'required',
             'email' => 'required|email|unique:users',
+            'nim' => 'required|unique:users',
+            'jurusan' => 'required',
             'password' => 'required|min:8|same:confirm-password',
             'confirm-password' => 'required|min:8',
             'foto' => 'image',
         ],
         [
             'nama.required' => 'Nama tidak boleh kosong',
+            'jurusan.required' => 'jurusan tidak boleh kosong',
             'email.unique' => 'Email sudah terdaftar',
+            'nim.unique' => 'nim sudah terdaftar',
             'confirm-password.same' => 'Konfirmasi password tidak sesuai',
         ]);
 
@@ -47,6 +51,8 @@ class RegisterController extends Controller
         $user = new User([
             'nama' => $validated['nama'],
             'email' => $validated['email'],
+            'nim' => $validated['nim'],
+            'jurusan' => $validated['jurusan'],
             'foto' => $fotoPath,
             'password' => bcrypt($validated['password']),
         ]);

@@ -133,8 +133,8 @@
                                 <div class="card-body">
                                     <p class="card-text" style="font-weight: 400;">
                                         Nama : {{ $m->nama }} <br>
-                                        NIM : 6706220047 <br>
-                                        Jurusan : D3 RPLA
+                                        NIM : {{ $m->nim }} <br>
+                                        Jurusan : {{ $m->jurusan }}
                                     </p>
                                 </div>
                             </div>

@@ -106,9 +106,11 @@ class UkmController extends Controller
                 'deskripsi' => 'required',
                 'visi' => 'required',
                 'misi' => 'required',
-                'logo' => 'image',
+                'logo' => 'required|image',
                 'link_grup' => 'required',
-                'pengesahan' => 'image',
+                'instagram' => 'required',
+                'telepon' => 'required',
+                'pengesahan' => 'required|image',
                 'ava_pengurus.*' => 'image',
                 'nama_pengurus.*' => 'required',
                 'jabatan_pengurus.*' => 'required',
@@ -124,6 +126,8 @@ class UkmController extends Controller
                 'misi.required' => 'misi tidak boleh kosong',
                 'logo.required' => 'logo tidak boleh kosong',
                 'link_grup.required' => 'Link grup tidak boleh kosong',
+                'instagram.required' => 'Instagram tidak boleh kosong',
+                'telepon.required' => 'Telepon tidak boleh kosong',
                 'pengesahan.required' => 'pengesahan tidak boleh kosong',
                 'ava_pengurus.required' => 'Avatar tidak boleh kosong',
                 'nama_pengurus.required' => 'Nama tidak boleh kosong',
@@ -157,28 +161,32 @@ class UkmController extends Controller
             'misi' => $validated['misi'],
             'logo' => $logoPath,
             'link_grup' => $validated['link_grup'],
+            'instagram' => $validated['instagram'],
+            'telepon' => $validated['telepon'],
             'pengesahan' => $pengesahanPath
         ]);
 
-        // foreach ($request->nama_pengurus_utama as $key => $namaPengurus) {
-        //     $pengurus = new Pengurus();
-        //     $pengurus->nama = $namaPengurus;
-        //     $pengurus->jabatan = $request->jabatan_pengurus_utama[$key];
-        //     $pengurus->jurusan = $request->jurusan_pengurus_utama[$key];
+        $ukm->save();
 
-        //     if ($request->hasFile('ava_pengurus_utama') && isset($request->ava_pengurus_utama[$key])) {
-        //         $avatarPath = $request->file('ava_pengurus_utama')[$key]->store('public/avatars');
-        //         $avatarPath = str_replace('public/', 'storage/', $avatarPath);
-        //         $pengurus->avatar = $avatarPath;
-        //     } else {
-        //         $pengurus->avatar = null;
-        //     }
+        foreach ($request->nama_pengurus_utama as $key => $namaPengurus) {
+            $pengurus = new Pengurus();
+            $pengurus->nama = $namaPengurus;
+            $pengurus->jabatan = $request->jabatan_pengurus_utama[$key];
+            $pengurus->jurusan = $request->jurusan_pengurus_utama[$key];
 
-        //     $ukm->penguruses()->save($pengurus);
-        // }
+            if ($request->hasFile('ava_pengurus_utama') && isset($request->ava_pengurus_utama[$key])) {
+                $avatarPath = $request->file('ava_pengurus_utama')[$key]->store('public/avatars');
+                $avatarPath = str_replace('public/', 'storage/', $avatarPath);
+                $pengurus->avatar = $avatarPath;
+            } else {
+                $pengurus->avatar = null;
+            }
 
-        // $ukm->save();
-        dd($request->all());
+            $ukm->penguruses()->save($pengurus);
+        }
+
+        $ukm->save();
+        // dd($request->all());
 
         return redirect('/login-ukm')->with('success', 'Daftar akun berhasil. Silahkan login!');
     }
