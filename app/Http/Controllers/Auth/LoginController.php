@@ -16,6 +16,10 @@ class LoginController extends Controller
         return view('mahasiswa.auth.login');
     }
 
+    public function loginUkm() {
+        return view('ukm.auth.login');
+    }
+
     public function authenticate(Request $request) {
         $credentials = $request->validate(
             [
@@ -26,7 +30,7 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect('/');
+            return redirect('/dashboard-mhs');
         }
 
         return back()->with('failed', 'Percobaan masuk gagal. Silahkan coba lagi!');

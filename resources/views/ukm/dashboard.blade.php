@@ -1,52 +1,48 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>dashboard mahasiswa</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <!-- g-font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;600&display=swap" rel="stylesheet">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Unit</title>
+    <link rel="icon" href="{{ asset('images/logo.png') }}" type="image/png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <link rel="stylesheet" href="{{ asset('css/dshbrd-mhs_sebelum-daftar.css') }}">
-    {{-- <link rel="stylesheet" href="{{ asset('css/dshbrd-mhs_setelah-daftar.css') }}"> --}}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
 </head>
 
 <body>
-
     <!-- Wrapper -->
     <div id="wrapper">
-
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
-            <div class="text-center sidebar-header">
+            <div class="text-center sidebar-header" onclick="location.href='/dashboard-ukm'" style="cursor: pointer;">
                 <div class="text-center sidebar-icon">
-                    <img class="sidebar-icon-image" src="{{ asset('images/logounit.png') }}" />
+                    <img class="sidebar-icon-image" src="{{ asset('images/logo.png') }}" />
                 </div>
             </div>
             <ul class="sidebar-nav">
                 <li class="sidebar-brand text-center" style="margin-bottom: 180px"></li>
                 <li>
-                    <div class="sidebar-link" onclick="location.href='/ukm'">
-                        <div class="sidebar-link-text">UKM</div>
+                    <div class="sidebar-link" onclick="location.href='/upload-proposal'">
+                        <div class="sidebar-link-text">Upload <br />Proposal</div>
                     </div>
-                    <div class="sidebar-link" onclick="location.href='/event'">
-                        <div class="sidebar-link-text">Event</div>
+                    <div class="sidebar-link" onclick="location.href='/daftar-pendaftar'">
+                        <div class="sidebar-link-text">Daftar <br />Pendaftar</div>
+                    </div>
+                    <div class="sidebar-link" onclick="location.href='/history'">
+                        <div class="sidebar-link-text">History <br />Pendaftar</div>
                     </div>
                 </li>
-                <div class="sidebar-logout" onclick="location.href='/logout'">
+                <div class="sidebar-logout" onclick="location.href='/signout'">
                     <div class="sidebar-logout-icon">
                         Log out
                     </div>
                     <svg class="vector" width="24" height="37" viewBox="0 0 24 37" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <path
-                            d="M22.2857 0H1.71429C1.25963 0 0.823594 0.19491 0.502103 0.541852C0.180612 0.888795 0 1.35935 0 1.85V18.5L8.57143 11.1V16.65H18.8571V20.35H8.57143V25.9L0 18.5V35.15C0 35.6406 0.180612 36.1112 0.502103 36.4581C0.823594 36.8051 1.25963 37 1.71429 37H22.2857C22.7404 37 23.1764 36.8051 23.4979 36.4581C23.8194 36.1112 24 35.6406 24 35.15V1.85C24 1.35935 23.8194 0.888795 23.4979 0.541852C23.1764 0.19491 22.7404 0 22.2857 0Z"
+                            d="M22.2857 0H1.71429C1.25963 0 0.823594 0.19491 0.502103 0.541852C0.180612 0.888795 0 1.35935 0 1.85V18.5L8.57143              11.1V16.65H18.8571V20.35H8.57143V25.9L0 18.5V35.15C0 35.6406 0.180612 36.1112 0.502103 36.4581C0.823594 36.8051 1.25963 37 1.71429 37H22.2857C22.7404 37 23.1764 36.8051 23.4979 36.4581C23.8194 36.1112 24 35.6406 24 35.15V1.85C24 1.35935 23.8194 0.888795 23.4979 0.541852C23.1764 0.19491 22.7404 0 22.2857 0Z"
                             fill="white" />
                     </svg>
                 </div>
@@ -57,7 +53,7 @@
         <!-- Header -->
         <div class="header-tel-u">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-lg-6">
                     <svg width="514" height="250" viewBox="0 0 714 329" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <rect x="362.622" y="283.32" width="113.678" height="113.678"
@@ -99,10 +95,10 @@
                         </defs>
                     </svg>
                 </div>
-                <div class="col-md-1"></div>
+                <div class="col-lg-1"></div>
             </div>
             <div class="right-logo-outer"></div>
-            <img class="right-profilepict-image" src="{{ Auth()->user()->foto }}" />
+            <img class="right-logo-image" src="{{ $data->logo }}" />
             <div class="svg-container">
                 <svg style="z-index: 1;" width="473" height="400" viewBox="0 0 473 486" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
@@ -173,114 +169,143 @@
                     </defs>
                 </svg>
             </div>
-
-            <h1 class="text-title">Halo, {{ Auth()->user()->nama }}</h1>
+            <h1 class="text-title">{{ $data->nama }}</h1>
             <div class="row">
-                <div class="col-md-8"></div>
+                <div class="col-lg-8"></div>
+                <div class="col-lg-4" style="z-index: 3; margin-left: 87%;">
+                    <a href="/edit-ukm" style="cursor: pointer;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 65 65"
+                            fill="none">
+                            <mask id="mask0_1_106" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
+                                width="65" height="65">
+                                <rect width="64.4139" height="64.4139" fill="white" />
+                            </mask>
+                            <g mask="url(#mask0_1_106)">
+                                <path
+                                    d="M6 59V49.3636H58V59H6ZM16.4 39.7273H20.04L40.32 20.9966L36.615 17.5636L16.4 36.3545V39.7273ZM11.2 44.5455V34.3068L40.32 7.38523C40.7967 6.94356 41.3492 6.60227 41.9775 6.36136C42.6058 6.12045 43.2667 6 43.96 6C44.6533 6 45.325 6.12045 45.975 6.36136C46.625 6.60227 47.21 6.96364 47.73 7.44545L51.305 10.8182C51.825 11.2598 52.2042 11.7818 52.4425 12.3841C52.6808 12.9864 52.8 13.6087 52.8 14.2511C52.8 14.8534 52.6808 15.4456 52.4425 16.0278C52.2042 16.61 51.825 17.142 51.305 17.6239L22.25 44.5455H11.2Z"
+                                    fill="white" />
+                            </g>
+                        </svg>
+                    </a>
+                </div>
             </div>
         </div>
-        <!-- End of header -->
+        <!-- Header -->
 
-        <!-- isi -->
-        {{-- <h4><b>Anda Belum mendaftar
-                <br>UKM manapun</b></h4>
-        <div class="row">
-            <svg xmlns="http://www.w3.org/2000/svg" width="90" height="90" viewBox="0 0 147 147"
-                fill="none" class="emoticon">
-                <mask id="mask0_1426_7" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
-                    width="147" height="147">
-                    <rect width="146.858" height="146.858" fill="#D9D9D9" />
-                </mask>
-                <g mask="url(#mask0_1426_7)">
-                    <path
-                        d="M94.846 67.3101C97.3956 67.3101 99.5628 66.4177 101.348 64.633C103.132 62.8483 104.025 60.6811 104.025 58.1315C104.025 55.5818 103.132 53.4147 101.348 51.6299C99.5628 49.8452 97.3956 48.9528 94.846 48.9528C92.2964 48.9528 90.1292 49.8452 88.3445 51.6299C86.5597 53.4147 85.6674 55.5818 85.6674 58.1315C85.6674 60.6811 86.5597 62.8483 88.3445 64.633C90.1292 66.4177 92.2964 67.3101 94.846 67.3101ZM52.0124 67.3101C54.562 67.3101 56.7292 66.4177 58.5139 64.633C60.2986 62.8483 61.191 60.6811 61.191 58.1315C61.191 55.5818 60.2986 53.4147 58.5139 51.6299C56.7292 49.8452 54.562 48.9528 52.0124 48.9528C49.4627 48.9528 47.2956 49.8452 45.5108 51.6299C43.7261 53.4147 42.8337 55.5818 42.8337 58.1315C42.8337 60.6811 43.7261 62.8483 45.5108 64.633C47.2956 66.4177 49.4627 67.3101 52.0124 67.3101ZM73.4292 82.6078C66.4942 82.6078 60.1966 84.571 54.5365 88.4974C48.8763 92.4239 44.7714 97.5996 42.2218 104.025H52.3183C54.562 100.251 57.545 97.2681 61.2675 95.0755C64.9899 92.8828 69.0438 91.7865 73.4292 91.7865C77.8145 91.7865 81.8684 92.8828 85.5909 95.0755C89.3133 97.2681 92.2964 100.251 94.54 104.025H104.637C102.087 97.5996 97.982 92.4239 92.3219 88.4974C86.6617 84.571 80.3642 82.6078 73.4292 82.6078ZM73.4292 134.62C64.9644 134.62 57.0096 133.014 49.5647 129.801C42.1198 126.589 35.6438 122.229 30.1366 116.722C24.6294 111.215 20.2696 104.739 17.0571 97.2936C13.8445 89.8487 12.2383 81.8939 12.2383 73.4292C12.2383 64.9644 13.8445 57.0096 17.0571 49.5647C20.2696 42.1198 24.6294 35.6438 30.1366 30.1366C35.6438 24.6294 42.1198 20.2696 49.5647 17.0571C57.0096 13.8445 64.9644 12.2383 73.4292 12.2383C81.8939 12.2383 89.8487 13.8445 97.2936 17.0571C104.739 20.2696 111.215 24.6294 116.722 30.1366C122.229 35.6438 126.589 42.1198 129.801 49.5647C133.014 57.0096 134.62 64.9644 134.62 73.4292C134.62 81.8939 133.014 89.8487 129.801 97.2936C126.589 104.739 122.229 111.215 116.722 116.722C111.215 122.229 104.739 126.589 97.2936 129.801C89.8487 133.014 81.8939 134.62 73.4292 134.62ZM73.4292 122.382C87.0952 122.382 98.6704 117.64 108.155 108.155C117.64 98.6704 122.382 87.0952 122.382 73.4292C122.382 59.7632 117.64 48.1879 108.155 38.7033C98.6704 29.2188 87.0952 24.4765 73.4292 24.4765C59.7632 24.4765 48.1879 29.2188 38.7033 38.7033C29.2188 48.1879 24.4765 59.7632 24.4765 73.4292C24.4765 87.0952 29.2188 98.6704 38.7033 108.155C48.1879 117.64 59.7632 122.382 73.4292 122.382Z"
-                        fill="#949494" />
-                </g>
-            </svg>
-        </div> --}}
-        @if ($telahTerdaftar)
-            <h3>List UKM</h3>
-            @foreach ($ukms as $ukm)
-                <!-- Tampilkan informasi UKM yang telah didaftarkan -->
-                <div id="page-content-wrapper">
-                    <div class="container-fluid">
-                        <div class="card mt-4">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="ukm1 col-1">
-                                        <img src="{{ $ukm->logo }}" style="width: auto;">
+        <!-- Data2 -->
+
+        <div id="page-content-wrapper" style="position: absolute;">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-7" style="margin-left: 30px;">
+                        <div>
+                            <h4 style="font-size: large;">Deskripsi</h4>
+                            <p style="font-size: 18px;">
+                                {{ $data->deskripsi }}
+                            </p>
+                        </div>
+                        <div>
+                            <h4 style="font-size: large;">Visi</h4>
+                            <p style="font-size: 18px;">
+                                {{ $data->visi }}
+                            </p>
+                        </div>
+                        <div>
+                            <h4 style="font-size: large;">Misi</h4>
+                            <p style="font-size: 18px;">
+                                {{ $data->misi }}
+                            </p>
+                        </div>
+                        {{-- <div class="mt-5">
+                            <img src="{{ asset('images/main_banner.png') }}" style="width: 100%;" alt="">
+                        </div> --}}
+                        <div class="mt-5">
+                            <h2>Kepengurusan</h2>
+                            <br>
+                            <div class="row">
+                                @foreach ($penguruses as $p)
+                                    <div class="col-lg-3">
+                                        <h4 style="text-align: center;"><b>{{ $p->jabatan }}</b></h4>
+                                        <div class="card card-kepengurusan text-center">
+                                            <img src="{{ asset('images/pengurus/pengurus_1.png') }}"
+                                                class="card-img-top card-img-p-2" alt="">
+                                            <p class="card-title card-kepengurusan-title">
+                                                {{ $p->nama }}
+                                            </p>
+                                            <div class="row">
+                                                <div class="col-lg-2"></div>
+                                                <div class="col-lg-8">
+                                                    <p class="text-start card-kepengurusan-desc">
+                                                        {{ $p->jurusan }}
+                                                    </p>
+                                                </div>
+                                            </div>
+
+                                        </div>
                                     </div>
-                                    <div class="namaukm col-8 mt-3">
-                                        <b>{{ $ukm->nama }}</b>
-                                    </div>
-                                    <div class="col-3">
-                                        <div class="btn-primary-review"
-                                            onclick="location.href='/detail-ukm/{{ $ukm->id }}'" role="button"
-                                            style="cursor: pointer;"><b>Lihat</b></div>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
-                </div>
-            @endforeach
-        @else
-            <!-- Tampilkan pesan bahwa pengguna belum mendaftar ke UKM manapun -->
-            <h4><b>Anda Belum mendaftar UKM manapun</b></h4>
-            <div class="row">
-                <svg xmlns="http://www.w3.org/2000/svg" width="90" height="90" viewBox="0 0 147 147"
-                    fill="none" class="emoticon">
-                    <!-- ... Bagian SVG untuk gambar emoticon ... -->
-                </svg>
-            </div>
-        @endif
-
-        <!-- end of isi -->
-
-        <!-- footer -->
-        <footer class="footer mt-5">
-            <div class="footer-left">
-                <h1><strong>Kontak</strong></h1>
-                <div class="img_">
-                    <img src="{{ asset('images/footer.png') }}" width="300px" alt="">
-                </div><br>
-                <div>
-                    <i class="fa fa-map-marker"></i>
-                    <p><span>Indonesia</span> Bandung,Jawa Barat</p>
-                </div>
-                <div>
-                    <i class="fa fa-phone"></i>
-                    <p>(022) 7566456</p>
-                </div>
-                <div>
-                    <i class="fa fa-envelope"></i>
-                    <p><a href="#">uniT@telkomuniversity.ac.id</a></p>
+                    <div class="col-lg-1"></div>
+                    {{-- <div class="col-lg-3">
+                        @foreach ($events as $e)
+                            <div class="mt-3">
+                                <img src="{{ asset('images/banner_right_1.png') }}" style="width: 60%;" alt="">
+                            </div>
+                        @endforeach
+                        <div class="mt-5">
+                            <img src="{{ asset('images/banner_right_2.png') }}" style="width: 60%;" alt="">
+                        </div>
+                    </div> --}}
                 </div>
             </div>
 
-
-            <div class="footer-right">
-                <div class="footer-media">
-                    <a href="#"><i class="fa fa-youtube"></i></a>
-                    <a href="#"><i class="fa fa-facebook"></i></a>
-                    <a href="#"><i class="fa fa-twitter"></i></a>
-                    <a href="#"><i class="fa fa-instagram"></i></a>
-                    <a href="#"><i class="fa fa-linkedin"></i></a>
+            <footer class="footer" style="margin-left : -20px; margin-bottom : -20px;">
+                <div class="footer-left">
+                    <h1><strong>Kontak</strong></h1>
+                    <div class="img_">
+                        <img src="{{ asset('images/footer.png') }}" width="400px" alt="">
+                    </div><br>
+                    <div>
+                        <i class="fa fa-map-marker"></i>
+                        <p><span>Indonesia</span> Bandung,Jawa Barat</p>
+                    </div>
+                    <div>
+                        <i class="fa fa-phone"></i>
+                        <p>(022) 7566456</p>
+                    </div>
+                    <div>
+                        <i class="fa fa-envelope"></i>
+                        <p><a href="#">uniT@telkomuniversity.ac.id</a></p>
+                    </div>
                 </div>
 
-                <p class="footer-about">
-                    <span>About</span>
-                    Di Channel ini kita akan berbagi barbagai Tutorial design, Pemograman dan lain-lain. Silahkan
-                    subscribe untuk kemajuan channel ini, jangan lupa, like dan comments. agar channel ini semakin
-                    berkembang
-                </p>
-            </div>
-        </footer>
-        <!-- end of footer -->
+
+                <div class="footer-right">
+                    <div class="footer-media">
+                        <a href="#"><i class="fa fa-youtube"></i></a>
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-instagram"></i></a>
+                        <a href="#"><i class="fa fa-linkedin"></i></a>
+                    </div>
+
+                    <p class="footer-about">
+                        <span>About</span>
+                        Di Channel ini kita akan berbagi barbagai Tutorial design, Pemograman dan lain-lain. Silahkan
+                        subscribe untuk kemajuan channel ini, jangan lupa, like dan comments. agar channel ini semakin
+                        berkembang
+                    </p>
+                </div>
+            </footer>
+        </div>
+        <!-- Data slese -->
 
     </div>
-    <!--  Wrapper sls -->
 
+
+    <!--  Wrapper sls -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">

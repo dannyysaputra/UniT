@@ -80,7 +80,7 @@
             <div class="col-md-6 red-half no-padding"
                 style="clip-path: polygon(0% 0, 90% 0, 100% 100%, 0 100%); position: relative; z-index: 2;">
                 <div class="row" style="width: 450px;">
-                    <form action="sign-in" method="POST">
+                    <form action="signin-ukm" method="POST">
                         @csrf
                         <div class="col-lg-12">
                             <h3 class="text-white text-center">Login</h3>
@@ -88,7 +88,7 @@
                             <div class="group8">
                                 <input required="true" class="main-input8" type="text" name="email">
                                 <span class="highlight-span8"></span>
-                                <label class="lebal-email8">Email SSO</label>
+                                <label class="lebal-email8">Email</label>
                             </div>
                             <div class="container-8">
                                 <div class="group8">
@@ -100,7 +100,7 @@
                             <small class="text-s"></small><a style="text-decoration: none;" href="forgetpass.html"><span
                                     style="color: #000">Forgot password?</a></span></small>
                             <p class="text-white text-center mt-5" style="cursor: pointer;">
-                                Belum punya akun? <a style="text-decoration: none;"href="/register-mahasiswa"><span
+                                Belum punya akun? <a style="text-decoration: none;"href="/register-ukm"><span
                                         style="color: #000">Register</a></span>
                             </p>
 

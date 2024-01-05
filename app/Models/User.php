@@ -43,4 +43,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function telahMendaftarKeUkm($ukmId)
+    {
+        return $this->ukms()->where('ukm_id', $ukmId)->exists();
+    }
+    
+    public function ukms()
+    {
+        return $this->belongsToMany(Ukm::class, 'mendaftars');
+    }
 }
