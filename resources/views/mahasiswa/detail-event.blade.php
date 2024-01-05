@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ukm</title>
+    <title>detail event</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <!-- g-font -->
@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <link rel="stylesheet" href="{{ asset('css/ukm.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/detail_event.css') }}">
 </head>
 
 <body>
@@ -22,7 +22,8 @@
     <div id="wrapper">
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
-            <div class="text-center sidebar-header" onclick="location.href='/dashboard-mhs'" style="cursor: pointer;">
+            <div class="text-center sidebar-header" onclick="location.href='/dashboard-mhs'"
+                style="cursor: pointer;">
                 <div class="text-center sidebar-icon">
                     <img class="sidebar-icon-image" src="{{ asset('images/logounit.png') }}" />
                 </div>
@@ -30,14 +31,14 @@
             <ul class="sidebar-nav">
                 <li class="sidebar-brand text-center" style="margin-bottom: 180px"></li>
                 <li>
-                    <div class="sidebar-link active" onclick="location.href='/ukm'">
+                    <div class="sidebar-link" onclick="location.href='/ukm'">
                         <div class="sidebar-link-text">UKM</div>
                     </div>
-                    <div class="sidebar-link" onclick="location.href='/event'">
+                    <div class="sidebar-link-event" onclick="location.href='/event'">
                         <div class="sidebar-link-text">Event</div>
                     </div>
                 </li>
-                <div class="sidebar-logout" onclick="location.href='/logout'">
+                <div class="sidebar-logout" onclick="location.href='login_2.html'">
                     <div class="sidebar-logout-icon">
                         Log out
                     </div>
@@ -55,6 +56,16 @@
         <!-- Header -->
         <div class="header-tel-u" style="height: 250px;">
             <div class="row">
+                <div>
+                    <img src="{{ asset('images/btn-mhs.png') }}" class="background-btn" role="button"
+                        href="/dashboard-mhs">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="38" height="46" viewBox="0 0 38 46"
+                        fill="none" class="arrow" role="button" onclick="location.href='/dashboard-mhs'">
+                        <path
+                            d="M0.878681 20.8787C-0.292892 22.0502 -0.292893 23.9497 0.878681 25.1213L19.9706 44.2132C21.1421 45.3848 23.0416 45.3848 24.2132 44.2132C25.3848 43.0416 25.3848 41.1421 24.2132 39.9706L7.24264 23L24.2132 6.02944C25.3848 4.85786 25.3848 2.95837 24.2132 1.7868C23.0416 0.615222 21.1421 0.615221 19.9706 1.78679L0.878681 20.8787ZM38 20L3 20L3 26L38 26L38 20Z"
+                            fill="white" />
+                    </svg>
+                </div>
                 <div class="col-lg-6">
                     <svg width="514" height="250" viewBox="0 0 714 329" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
@@ -97,29 +108,59 @@
                         </defs>
                     </svg>
                 </div>
+
                 <div class="col-lg-1"></div>
+
             </div>
+
             <div class="right-logo-outer"></div>
-            <img class="right-profilepict-image" src="{{ Auth::user()->foto }}" />
+            <img class="right-logo-image" src="{{ asset($ukm->logo) }}" />
+
+            <div class="nama-ukm">
+                <h2><b>{{ $ukm->nama }}</b></h2>
+            </div>
+
             <div class="row">
                 <div class="col-lg-8"></div>
+                <div class="col-lg-4" style="z-index: 3; margin-left: 87%;"></div>
             </div>
         </div>
         <!-- Header -->
 
         <!-- isi -->
-        <h4>Ikut yang mana?</h4>
-        <div id="page-content-wrapper" style="position: absolute;">
-            <div class="container-fluid align-items-center">
-                <div class="row">
-                    @foreach ($ukms as $ukm)
-                        <div class="col-2" style="margin-left: 40px;">
-                            <a href="/detail-ukm/{{ $ukm->id }}">
-                                <img src="{{ asset($ukm->logo) }}" class="ukm1" style="width: 100%;"
-                                    alt="">
-                            </a>
+        <div style="position: absolute;">
+            <div class="container-fluid deskripsi">
+                <div class="row mt-5">
+                    <div class="col-9 mt-5">
+                        <div>
+                            <p style="font-size: 25px; margin-left: 40px;">
+                                {{ $ukm->nama }} Proudly Presents<br>
+                                <br>
+                                {{ $event->judul }}
+                                <br>
+                            </p>
                         </div>
-                    @endforeach
+                        <div class="row mt-2 event-desc" style="font-size: 18.5px;">
+                            <div class="col-5 mt-4" style="margin-left: 40px;">
+                                <img src="{{ Storage::url($event->foto) }}" style="width: 100%;" alt="">
+                            </div>
+                            <div class="col-5" style="margin-left: 40px;">
+                                <p>
+                                    {{ $event->deskripsi }}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row mt-5" style="font-size: 22px; margin-left: 40px;">
+                            <div class="col-12">
+                                <p> Tanggal mulai: <span>{{ $event->tgl_mulai }}</span>
+                                </p>
+                                <br>
+                                <p>
+                                    Tanggal selesai: <span>{{ $event->tgl_selesai }} </span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -130,7 +171,7 @@
             <div class="footer-left">
                 <h1><strong>Kontak</strong></h1>
                 <div class="img_">
-                    <img src="{{ asset('footer.png') }}" width="300px" alt="">
+                    <img src="{{ asset('images/footer.png') }}" width="300px" alt="">
                 </div><br>
                 <div>
                     <i class="fa fa-map-marker"></i>
@@ -166,18 +207,13 @@
         </footer>
         <!-- end of footer -->
 
+
     </div>
     <!--  Wrapper sls -->
-
-
-
-
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
     </script>
-    <script type="javascript"></script>
-    <script src="{{ asset('js/index.js') }}"></script>
 </body>
 
 </html>

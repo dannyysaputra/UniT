@@ -99,7 +99,7 @@
                 <div class="col-lg-1"></div>
             </div>
             <div class="right-logo-outer"></div>
-            <img class="right-logo-image" src="{{ asset('images/right_logo.png') }}" />
+            <img class="right-logo-image" src="{{ asset($ukm->logo) }}" />
             <div class="row">
                 <div class="col-lg-8"></div>
                 <div class="col-lg-4" style="z-index: 3; margin-left: 87%;"><a href="edit.html"

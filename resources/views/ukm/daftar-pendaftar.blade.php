@@ -109,7 +109,7 @@
                 <div class="col-lg-1"></div>
             </div>
             <div class="right-logo-outer"></div>
-            <img class="right-logo-image" src="{{ asset('images/right_logo.png') }}" />
+            <img class="right-logo-image" src="{{ asset($ukm->logo) }}" />
             <div class="row">
                 <div class="col-lg-8"></div>
                 <div class="col-lg-4" style="z-index: 3; margin-left: 87%;">
@@ -121,85 +121,28 @@
 
         <!-- daftar nama2 mahasiswa -->
         <div class="row p-5">
-            <div class="col-lg-5 mt-5">
-                <div class="card card-register">
-                    <div class="row g-0">
-                        <div class="col-md-4 p-3 mt-2">
-                            <img src="{{ asset('images/default_profile.png') }}"
-                                class="img-fluid img-thumbnail p-1 img-circle-custom">
-                        </div>
-                        <div class="col-md-8 mt-2 pt-2">
-                            <div class="card-body">
-                                <p class="card-text" style="font-weight: 400;">
-                                    Nama : Khalilah Atika Akmal <br>
-                                    NIM : 6706220047 <br>
-                                    Jurusan : D3 RPLA
-                                </p>
+            @foreach ($mahasiswas as $m)
+                <div class="col-lg-5 mt-5">
+                    <div class="card card-register">
+                        <div class="row g-0">
+                            <div class="col-md-4 p-3 mt-2">
+                                <img src="{{ asset($m->foto) }}"
+                                    class="img-fluid img-thumbnail p-1 img-circle-custom">
+                            </div>
+                            <div class="col-md-8 mt-2 pt-2">
+                                <div class="card-body">
+                                    <p class="card-text" style="font-weight: 400;">
+                                        Nama : {{ $m->nama }} <br>
+                                        NIM : 6706220047 <br>
+                                        Jurusan : D3 RPLA
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-1"></div>
-            <div class="col-lg-5 mt-5">
-                <div class="card card-register">
-                    <div class="row g-0">
-                        <div class="col-md-4 p-3 mt-2">
-                            <img src="{{ asset('images/default_profile.png') }}"
-                                class="img-fluid img-thumbnail p-1 img-circle-custom">
-                        </div>
-                        <div class="col-md-8 mt-2 pt-2">
-                            <div class="card-body">
-                                <p class="card-text" style="font-weight: 400;">
-                                    Nama : Kira Santono <br>
-                                    NIM : 6706220152 <br>
-                                    Jurusan : D3 RPLA
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-5 mt-5">
-                <div class="card card-register">
-                    <div class="row g-0">
-                        <div class="col-md-4 p-3 mt-2">
-                            <img src="{{ asset('images/default_profile.png') }}"
-                                class="img-fluid img-thumbnail p-1 img-circle-custom">
-                        </div>
-                        <div class="col-md-8 mt-2 pt-2">
-                            <div class="card-body">
-                                <p class="card-text" style="font-weight: 400;">
-                                    Nama : Aria Ridwan <br>
-                                    NIM : 6706290347 <br>
-                                    Jurusan : D3 Multimedia
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-1"></div>
-            <div class="col-lg-5 mt-5">
-                <div class="card card-register">
-                    <div class="row g-0">
-                        <div class="col-md-4 p-3 mt-2">
-                            <img src="{{ asset('images/default_profile.png') }}"
-                                class="img-fluid img-thumbnail p-1 img-circle-custom">
-                        </div>
-                        <div class="col-md-8 mt-2 pt-2">
-                            <div class="card-body">
-                                <p class="card-text" style="font-weight: 400;">
-                                    Nama : Hirotaka Akogi <br>
-                                    NIM : 67065670047 <br>
-                                    Jurusan : S1 Sistem Informasi
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+                <div class="col-lg-1"></div>
+            @endforeach
         </div>
         <footer class="footer">
             <div class="footer-left">

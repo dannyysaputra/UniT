@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Models\Ukm;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -10,16 +11,35 @@ class EventController extends Controller
 {
     public function proposalForm()
     {
-        return view('ukm.upload-proposal');
+        $ukm = Auth::guard('ukm')->user();
+
+        return view('ukm.upload-proposal', ['ukm' => $ukm]);
     }
 
     public function viewHistory()
-{
-    $ukmId = Auth::guard('ukm')->id();
-    $events = Event::where('ukm_id', $ukmId)->get();
+    {
+        $ukmId = Auth::guard('ukm')->id();
+        $ukm = Auth::guard('ukm')->user();
+        $events = Event::where('ukm_id', $ukmId)->get();
 
-    return view('ukm.history', ['events' => $events]);
-}
+        return view('ukm.history', [
+            'ukm' => $ukm,
+            'events' => $events
+    ]);
+    }
+
+    public function detailEvent($id)
+    {
+        $event = Event::find($id);
+
+        $ukm = Ukm::find($event->ukm_id);
+
+        return view('mahasiswa.detail-event', [
+            'event' => $event,
+            'ukm' => $ukm
+        ]);
+    }
+
 
     // Method untuk menyimpan proposal event
     public function submitProposal(Request $request)

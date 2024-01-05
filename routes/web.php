@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\MendaftarController;
 use App\Http\Controllers\UkmController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,8 +25,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/ukm', [MahasiswaController::class, 'viewUkm'])->name('mahasiswa.ukm');
     Route::get('/event', [MahasiswaController::class, 'viewEvent'])->name('mahasiswa.event');
 
+    Route::get('/detail-event/{id}', [EventController::class, 'detailEvent'])->name('mahasiswa.detail-event');
 
+    Route::get('/detail-ukm/{id}', [MahasiswaController::class, 'detailUkm'])->name('mahasiswa.detail-ukm');
 
+    Route::post('/daftar-ukm/{id}', [MendaftarController::class, 'daftarUkm']);
+    Route::delete('/batalkan-pendaftaran/{id}', [MendaftarController::class, 'batalkanPendaftaranUkm']);
 
     Route::get('/logout', [LogoutController::class, 'logout']);
 });
@@ -50,9 +55,9 @@ Route::get('/dashboard-ukm', [UkmController::class, 'dashboardUkm'])->name('ukm.
 
 Route::get('/edit-ukm', [UkmController::class, 'editUkm'])->name('ukm.edit');
 Route::post('/update-ukm', [UkmController::class, 'updateUkm']);
+Route::get('/daftar-pendaftar', [UkmController::class, 'viewDaftarPendaftar'])->name('ukm.daftar-pendaftar');
 
 Route::get('/upload-proposal', [EventController::class, 'proposalForm'])->name('ukm.upload-proposal');
-Route::get('/daftar-pendaftar', [UkmController::class, 'viewDaftarPendaftar'])->name('ukm.daftar-pendaftar');
 
 Route::get('/history', [EventController::class, 'viewHistory'])->name('ukm.history');
 Route::post('/submit-proposal', [EventController::class, 'submitProposal']);

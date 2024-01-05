@@ -13,7 +13,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <link rel="stylesheet" href="{{ asset('css/dashboard_mhs.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/dshbrd-mhs_sebelum-daftar.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('css/dshbrd-mhs_setelah-daftar.css') }}"> --}}
 </head>
 
 <body>
@@ -23,7 +24,7 @@
 
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
-            <div class="text-center sidebar-header" onclick="location.href='/dashboard-mhs'" style="cursor: pointer;">
+            <div class="text-center sidebar-header">
                 <div class="text-center sidebar-icon">
                     <img class="sidebar-icon-image" src="{{ asset('images/logounit.png') }}" />
                 </div>
@@ -101,7 +102,7 @@
                 <div class="col-md-1"></div>
             </div>
             <div class="right-logo-outer"></div>
-            <img class="right-profilepict-image" src="{{ Auth::user()->foto }}" />
+            <img class="right-profilepict-image" src="{{ Auth()->user()->foto }}" />
             <div class="svg-container">
                 <svg style="z-index: 1;" width="473" height="400" viewBox="0 0 473 486" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
@@ -173,7 +174,7 @@
                 </svg>
             </div>
 
-            <h1 class="text-title">Halo, {{ auth()->user()->nama }}</h1>
+            <h1 class="text-title">Halo, {{ Auth()->user()->nama }}</h1>
             <div class="row">
                 <div class="col-md-8"></div>
             </div>
@@ -181,26 +182,21 @@
         <!-- End of header -->
 
         <!-- isi -->
-        <h4>Apa yang baru?</h4>
-        <div id="page-content-wrapper" style="position: absolute;">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-3">
-                        <img src="{{ asset('images/event1-event.png') }}" class="event1" style="width: 100%;"
-                            alt="" onclick="location.href='detail_event.html'">
-                    </div>
-                    <div class="col-3">
-                        <img src="{{ asset('images/event2.png') }}" class="event2" style="width: 100%;"
-                            alt="">
-                    </div>
-                    <div class="col-2 right-ukm">
-                        <img src="{{ asset('images/ukm1kanan.png') }}" class="right-ukm1" style="width: 100%;"
-                            alt="">
-                        <img src="{{ asset('images/logoukmkanan2.png') }}" class="right-ukm2" style="width: 100%;"
-                            alt="">
-                    </div>
-                </div>
-            </div>
+        <h4><b>Anda Belum mendaftar
+                <br>UKM manapun</b></h4>
+        <div class="row">
+            <svg xmlns="http://www.w3.org/2000/svg" width="90" height="90" viewBox="0 0 147 147"
+                fill="none" class="emoticon">
+                <mask id="mask0_1426_7" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
+                    width="147" height="147">
+                    <rect width="146.858" height="146.858" fill="#D9D9D9" />
+                </mask>
+                <g mask="url(#mask0_1426_7)">
+                    <path
+                        d="M94.846 67.3101C97.3956 67.3101 99.5628 66.4177 101.348 64.633C103.132 62.8483 104.025 60.6811 104.025 58.1315C104.025 55.5818 103.132 53.4147 101.348 51.6299C99.5628 49.8452 97.3956 48.9528 94.846 48.9528C92.2964 48.9528 90.1292 49.8452 88.3445 51.6299C86.5597 53.4147 85.6674 55.5818 85.6674 58.1315C85.6674 60.6811 86.5597 62.8483 88.3445 64.633C90.1292 66.4177 92.2964 67.3101 94.846 67.3101ZM52.0124 67.3101C54.562 67.3101 56.7292 66.4177 58.5139 64.633C60.2986 62.8483 61.191 60.6811 61.191 58.1315C61.191 55.5818 60.2986 53.4147 58.5139 51.6299C56.7292 49.8452 54.562 48.9528 52.0124 48.9528C49.4627 48.9528 47.2956 49.8452 45.5108 51.6299C43.7261 53.4147 42.8337 55.5818 42.8337 58.1315C42.8337 60.6811 43.7261 62.8483 45.5108 64.633C47.2956 66.4177 49.4627 67.3101 52.0124 67.3101ZM73.4292 82.6078C66.4942 82.6078 60.1966 84.571 54.5365 88.4974C48.8763 92.4239 44.7714 97.5996 42.2218 104.025H52.3183C54.562 100.251 57.545 97.2681 61.2675 95.0755C64.9899 92.8828 69.0438 91.7865 73.4292 91.7865C77.8145 91.7865 81.8684 92.8828 85.5909 95.0755C89.3133 97.2681 92.2964 100.251 94.54 104.025H104.637C102.087 97.5996 97.982 92.4239 92.3219 88.4974C86.6617 84.571 80.3642 82.6078 73.4292 82.6078ZM73.4292 134.62C64.9644 134.62 57.0096 133.014 49.5647 129.801C42.1198 126.589 35.6438 122.229 30.1366 116.722C24.6294 111.215 20.2696 104.739 17.0571 97.2936C13.8445 89.8487 12.2383 81.8939 12.2383 73.4292C12.2383 64.9644 13.8445 57.0096 17.0571 49.5647C20.2696 42.1198 24.6294 35.6438 30.1366 30.1366C35.6438 24.6294 42.1198 20.2696 49.5647 17.0571C57.0096 13.8445 64.9644 12.2383 73.4292 12.2383C81.8939 12.2383 89.8487 13.8445 97.2936 17.0571C104.739 20.2696 111.215 24.6294 116.722 30.1366C122.229 35.6438 126.589 42.1198 129.801 49.5647C133.014 57.0096 134.62 64.9644 134.62 73.4292C134.62 81.8939 133.014 89.8487 129.801 97.2936C126.589 104.739 122.229 111.215 116.722 116.722C111.215 122.229 104.739 126.589 97.2936 129.801C89.8487 133.014 81.8939 134.62 73.4292 134.62ZM73.4292 122.382C87.0952 122.382 98.6704 117.64 108.155 108.155C117.64 98.6704 122.382 87.0952 122.382 73.4292C122.382 59.7632 117.64 48.1879 108.155 38.7033C98.6704 29.2188 87.0952 24.4765 73.4292 24.4765C59.7632 24.4765 48.1879 29.2188 38.7033 38.7033C29.2188 48.1879 24.4765 59.7632 24.4765 73.4292C24.4765 87.0952 29.2188 98.6704 38.7033 108.155C48.1879 117.64 59.7632 122.382 73.4292 122.382Z"
+                        fill="#949494" />
+                </g>
+            </svg>
         </div>
         <!-- end of isi -->
 

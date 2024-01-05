@@ -22,8 +22,7 @@
     <div id="wrapper">
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
-            <div class="text-center sidebar-header" onclick="location.href='/dashboard-mhs'"
-                style="cursor: pointer;">
+            <div class="text-center sidebar-header" onclick="location.href='/dashboard-mhs'" style="cursor: pointer;">
                 <div class="text-center sidebar-icon">
                     <img class="sidebar-icon-image" src="{{ asset('images/logounit.png') }}" />
                 </div>
@@ -113,18 +112,12 @@
         <div id="page-content-wrapper" style="position: absolute;">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-3">
-                        <img src="{{ asset('images/event1-event.png') }}" class="event1" style="width: 100%;"
-                            alt="" onclick="location.href='detail_event.html'" style="cursor: pointer;">
-                    </div>
-                    <div class="col-3">
-                        <img src="{{ asset('images/event2-event.png') }}" class="event2" style="width: 100%;"
-                            alt="" onclick="location.href=''" style="cursor: pointer;">
-                    </div>
-                    <div class="col-3">
-                        <img src="{{ asset('images/event3-event.png') }}" class="event3" style="width: 100%;"
-                            alt="" onclick="location.href=''" style="cursor: pointer;">
-                    </div>
+                    @foreach ($events as $e)
+                        <div class="col-3">
+                            <img src="{{ Storage::url($e->foto) }}" class="event1" style="width: 100%;"
+                                alt="" onclick="location.href='/detail-event/{{ $e->id }}'">
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>

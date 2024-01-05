@@ -84,7 +84,15 @@ class UkmController extends Controller
 
     public function viewDaftarPendaftar()
     {
-        return view('ukm.daftar-pendaftar');
+        $ukm = auth()->guard('ukm')->user();
+
+        // Ambil daftar mahasiswa yang mendaftar pada UKM yang sedang login
+        $mahasiswas = $ukm->users;
+
+        return view('ukm.daftar-pendaftar', [
+            'ukm' => $ukm,
+            'mahasiswas' => $mahasiswas
+        ]);
     }
 
     public function createUkm(Request $request)

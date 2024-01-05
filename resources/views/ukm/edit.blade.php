@@ -35,7 +35,7 @@
                         <div class="sidebar-link-text">History <br />Pendaftar</div>
                     </div>
                 </li>
-                <div class="sidebar-logout" onclick="location.href='/singout'">
+                <div class="sidebar-logout" onclick="location.href='/signout'">
                     <div class="sidebar-logout-icon">Log out</div>
                     <svg class="vector" width="24" height="37" viewBox="0 0 24 37" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
@@ -96,7 +96,7 @@
                 <div class="col-lg-1"></div>
             </div>
             <div class="right-logo-outer"></div>
-            <img class="right-logo-image" src="{{ asset('images/right_logo.png') }}" />
+            <img class="right-logo-image" src="{{ $data->logo }}" />
             <div class="svg-container">
                 <svg style="z-index: 1" width="473" height="400" viewBox="0 0 473 486" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
@@ -179,7 +179,7 @@
         <div>
             <div class="text-center mt-4">
                 <center>
-                    <img src="{{ asset('images/mid_logo.png') }}" width="12%" alt="" />
+                    <img src="{{ $data->logo }}" width="12%" alt="" />
                 </center>
             </div>
             <form action="/update-ukm" method="POST" enctype="multipart/form-data">
