@@ -5,14 +5,27 @@ namespace App\Http\Controllers;
 use App\Models\Event;
 use App\Models\Ukm;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MahasiswaController extends Controller
 {
     public function index()
     {
         $ukms = Ukm::all();
+        $ukmPengguna = Auth::user()->ukms()->get();
 
-        return view('mahasiswa.dashboard', ['ukms' => $ukms]);
+        // Kemudian, Anda dapat memeriksa apakah pengguna terkait dengan UKM atau tidak
+        if ($ukmPengguna->count() > 0) {
+            $telahMendaftarKeUKM = true;
+        } else {
+            $telahMendaftarKeUKM = false;
+        }
+
+
+        return view('mahasiswa.dashboard', [
+            'ukms' => $ukms,
+            'telahTerdaftar' => $telahMendaftarKeUKM
+        ]);
     }
 
     public function viewUkm()
@@ -24,7 +37,7 @@ class MahasiswaController extends Controller
 
     public function viewEvent()
     {
-        $events = Event::all()->where('status', 'Approved');
+        $events = Event::all()->where('status', 'Accepted');
 
         return view('mahasiswa.event', ['events' => $events]);
     }

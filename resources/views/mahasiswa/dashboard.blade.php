@@ -182,7 +182,7 @@
         <!-- End of header -->
 
         <!-- isi -->
-        <h4><b>Anda Belum mendaftar
+        {{-- <h4><b>Anda Belum mendaftar
                 <br>UKM manapun</b></h4>
         <div class="row">
             <svg xmlns="http://www.w3.org/2000/svg" width="90" height="90" viewBox="0 0 147 147"
@@ -197,7 +197,44 @@
                         fill="#949494" />
                 </g>
             </svg>
-        </div>
+        </div> --}}
+        @if ($telahTerdaftar)
+            <h3>List UKM</h3>
+            @foreach ($ukms as $ukm)
+                <!-- Tampilkan informasi UKM yang telah didaftarkan -->
+                <div id="page-content-wrapper">
+                    <div class="container-fluid">
+                        <div class="card mt-4">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="ukm1 col-1">
+                                        <img src="{{ $ukm->logo }}" style="width: auto;">
+                                    </div>
+                                    <div class="namaukm col-8 mt-3">
+                                        <b>{{ $ukm->nama }}</b>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="btn-primary-review"
+                                            onclick="location.href='/detail-ukm/{{ $ukm->id }}'" role="button"
+                                            style="cursor: pointer;"><b>Lihat</b></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        @else
+            <!-- Tampilkan pesan bahwa pengguna belum mendaftar ke UKM manapun -->
+            <h4><b>Anda Belum mendaftar UKM manapun</b></h4>
+            <div class="row">
+                <svg xmlns="http://www.w3.org/2000/svg" width="90" height="90" viewBox="0 0 147 147"
+                    fill="none" class="emoticon">
+                    <!-- ... Bagian SVG untuk gambar emoticon ... -->
+                </svg>
+            </div>
+        @endif
+
         <!-- end of isi -->
 
         <!-- footer -->

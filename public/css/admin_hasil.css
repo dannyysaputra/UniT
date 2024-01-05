@@ -1,13 +1,10 @@
 body {
-    font-family: 'Inter', sans-serif;
-}
-
-body {
     overflow-x: hidden;
+    font-family: 'Inter', sans-serif;
   }
-  
-  /* css beneran */
-  #wrapper {
+
+/* css beneran */
+#wrapper {
     padding-left: 0;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
@@ -51,11 +48,6 @@ body {
   #wrapper.toggled #page-content-wrapper {
     position: absolute;
     margin-right: -250px;
-  }
-  
-  .header-tel-u {
-    height: 400px;
-    background: linear-gradient(107deg, #a80000 38.42%, #db5f1e 121.01%);
   }
   
   /* Sidebar Style */
@@ -112,27 +104,17 @@ body {
     box-sizing: border-box;
   }
   .sidebar-link {
-    background: #a80000;
+    background: #ffffff;
     border-radius: 107px 0px 0px 107px;
     width: 142px;
-    height: 50px;
+    height: 65px;
     position: relative;
     left: 45px;
     top: auto;
     margin-bottom: 26px;
     z-index: 1;
     cursor: pointer;
-    color: #ffffff;
-  }
-  
-  .sidebar-link.active {
-      background: #fff;
-      color: #000;
-  }
-  
-  .sidebar-link:hover {
-      background: #fff;
-      color: #000;
+    color: #000;
   }
   
   .sidebar-link-text,
@@ -141,7 +123,6 @@ body {
     justify-content: center;
     align-items: center;
     position: relative;
-
   }
   .sidebar-link-text {
     text-align: -webkit-center;
@@ -150,7 +131,6 @@ body {
     left: -1px;
     top: 10px;
   }
-  
   
   .rectangle-icon {
     width: 90px;
@@ -188,8 +168,8 @@ body {
   }
   
   h1.text-title {
-    position: relative; /* posisis bgus*/
-    z-index: 2; /* svg pengaturan*/
+    position: relative; 
+    z-index: 2; 
     font-size: 70px;
     font-weight: 700;
     color: #fff;
@@ -210,7 +190,7 @@ body {
     height: 90px;
     left: 50px !important;
     top: 32px !important;
-    background: #fff;
+    background: white;
     border-radius: 9999px;
     position: absolute;
   }
@@ -241,90 +221,44 @@ body {
     font-weight: 400;
     top: 5px;
   }
-  
-  .right-logo-outer {
-    width: 70px;
-    height: 70px;
-    left: 90%;
-    top: 45px;
+/* end of sidebar */
+
+/* header */
+.header-bg {
+    z-index: 1;
     position: absolute;
-    align-items: end;
-    background: white;
-    border-radius: 9999px;
-    z-index: 9999;
+    height: 183px;
   }
-  
-  .right-profilepict-image {
+  .left-header {
+    z-index: 2;
+    position: absolute;
+    width: 25%;
+    height: 183px
+  }
+  .pp-admin {
+    z-index: 3;
+    position: absolute;
+    margin-left: 77%;
+    margin-top: 30px;
     width: 60px;
     height: 60px;
-    left: 90.4%;
-    top: 50px;
+    flex-shrink: 0;
+  }
+  .pp-admin-deskripsi {
+    color: #000;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: normal;
+    z-index: 3;
     position: absolute;
-    z-index: 9999;
-    align-items: center;
+    margin-left: 71%;
+    margin-top: 50px;
   }
-  
-  .custom-label {
-      font-weight: 500;
-      margin-bottom: 12px;
-      font-size: 20px;
-  }
-  
-  .custom-input {
-      border: 1px solid #CD502F;
-  }
-  
-  .btn-custom {
-      background-color: #DB5F1E;
-      color: #fff;
-      border: none;
-      border-radius: 15px;
-      padding-left: 30px;
-      padding-right: 30px;
-  }
-  
-  .btn-custom:hover {
-      background-color: #fff;
-      color: #DB5F1E;
-      border: 1px solid #DB5F1E;
-  }
-  
-  .btn-custom-secondary {
-      background-color: #fff;
-      color: #000;
-      border: none;
-      border-radius: 15px;
-      padding-left: 30px;
-      padding-right: 30px;
-  }
-  
-  .btn-custom-secondary:hover {
-      color: #fff;
-      border: 1px solid #fff;
-      background-color: #DB5F1E;
-  }
-  
-  .custom-modal {
-      border-radius: 20px;
-        background: linear-gradient(258deg, #AD0000 -6.59%, #D86636 84.63%);
-        color: white;
-  }
+  /* end of header */
 
   /* isi */
-  h4 {
-    position: relative;
-    color: #000;
-    font-size: 32px;
-    font-weight: 600;
-    line-height: normal;
-    margin-left: 60px;
-    margin-top: 20px;
-    color: #000;
-  }
-
-  .card {
-    margin-left: 25px;
-    width: 1000px;
+.card {
+    width: 1200px;
     height: 100px;
     flex-shrink: 0;
     border-radius: 14px;
@@ -348,21 +282,29 @@ body {
   
   .namaukm {
     color: #000;
-    font-family: Inter;
-    font-size: 25px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;    
+    font-size: 22px;
+    font-weight: 500;
+    line-height: normal;
     left: 25px;
+    position: relative;
+    top: 5px;
+  }
+  
+  .judulevent {
+    color: #626262;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: normal;
+    top: 5px;
     position: relative;
   }
   
-  .btn-primary-review {
-    width: 120px;
-    height: 40px;
+  .accepted {
+    width: 130px;
+    height: 30px;
     flex-shrink: 0;
-    border-radius: 15px;
-    background: linear-gradient(105deg, #D86636 39.4%, #AD0000 166.28%);
+    border-radius: 12px;
+    background: linear-gradient(105deg, #43D836 39.4%, #FFF 166.28%);
     margin-top: 12px;
     left: 70px;
     color: #fff;
@@ -370,8 +312,24 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-weight: 500;
   }
 
+  .decline {
+    width: 130px;
+    height: 30px;
+    flex-shrink: 0;
+    border-radius: 12px;
+    background: #DB1E1E;
+    margin-top: 12px;
+    left: 70px;
+    color: #fff;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+  }
   /* end of isi */
 
   /* footerrrr */
@@ -387,7 +345,7 @@ footer {
   text-align: left;
   font: bold 16px sans-serif;
   padding: 50px 50px 60px 50px;
-  top: 170px;
+  top: 100px;
   padding-left: 200px;
   position: relative;
 }
@@ -538,33 +496,31 @@ footer {
       margin-left: 0px;
   }
 }
-  
-  
-  @media (min-width: 768px) {
-    #wrapper {
-      padding-left: 187px;
-    }
-  
-    #wrapper.toggled {
-      padding-left: 0;
-    }
-  
-    #sidebar-wrapper {
-      width: 187px;
-    }
-  
-    #wrapper.toggled #sidebar-wrapper {
-      width: 0;
-    }
-  
-    #page-content-wrapper {
-      padding: 20px;
-      position: relative;
-    }
-  
-    #wrapper.toggled #page-content-wrapper {
-      position: relative;
-      margin-right: 0;
-    }
+
+@media (min-width: 768px) {
+  #wrapper {
+    padding-left: 187px;
   }
-  
+
+  #wrapper.toggled {
+    padding-left: 0;
+  }
+
+  #sidebar-wrapper {
+    width: 187px;
+  }
+
+  #wrapper.toggled #sidebar-wrapper {
+    width: 0;
+  }
+
+  #page-content-wrapper {
+    padding: 20px;
+    position: relative;
+  }
+
+  #wrapper.toggled #page-content-wrapper {
+    position: relative;
+    margin-right: 0;
+  }
+}

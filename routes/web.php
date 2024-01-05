@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
@@ -43,6 +44,14 @@ Route::any('/sign-in', [LoginController::class, 'authenticate']);
 
 Route::get('/register-mahasiswa', [RegisterController::class, 'create']);
 Route::post('/create-user', [RegisterController::class, 'store']);
+
+Route::get('/login-admin', [AdminController::class, 'loginAdmin']);
+Route::any('/signin-admin', [AdminController::class, 'authAdmin']);
+Route::get('/signout-admin', [AdminController::class, 'signoutAdmin']);
+
+Route::get('/dashboard-admin', [AdminController::class, 'index']);
+Route::get('/review/{id}', [AdminController::class, 'review'])->name('admin.review');
+Route::put('/update-event-status/{eventId}/{status}', [AdminController::class, 'updateEventStatus']);
 
 Route::get('/login-ukm', [UkmController::class, 'loginUkm']);
 

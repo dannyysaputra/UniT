@@ -137,7 +137,7 @@
                                     <img class="left-logo-image" src="{{ Storage::url($e->foto) }}" />
                                     <h5 style="padding-left: 80px; margin-top: 1px;"> {{ $e->judul }}
                                     </h5>
-                                    <p style="padding-left: 80px; margin-top: 1px;">Tanggal approve</p>
+                                    <p style="padding-left: 80px; margin-top: 1px;">{{ $e->updated_at }}</p>
                                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                                         <button class="btn btn-outline-success me-md-2"
                                             style="padding-left: 20px;"type="button">
