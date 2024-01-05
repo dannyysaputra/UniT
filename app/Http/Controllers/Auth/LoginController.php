@@ -30,7 +30,7 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect('/');
+            return redirect('/dashboard-mhs');
         }
 
         return back()->with('failed', 'Percobaan masuk gagal. Silahkan coba lagi!');

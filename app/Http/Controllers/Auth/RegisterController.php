@@ -33,7 +33,7 @@ class RegisterController extends Controller
         [
             'nama.required' => 'Nama tidak boleh kosong',
             'email.unique' => 'Email sudah terdaftar',
-            'password.same' => 'Konfirmasi password tidak sesuai',
+            'confirm-password.same' => 'Konfirmasi password tidak sesuai',
         ]);
 
         if ($request->hasFile('foto')) {

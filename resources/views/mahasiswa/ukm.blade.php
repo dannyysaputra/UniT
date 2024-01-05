@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>dashboard mahasiswa</title>
+    <title>ukm</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <!-- g-font -->
@@ -13,17 +13,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <link rel="stylesheet" href="{{ asset('css/dashboard_mhs.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/ukm.css') }}">
 </head>
 
 <body>
 
     <!-- Wrapper -->
     <div id="wrapper">
-
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
-            <div class="text-center sidebar-header" onclick="location.href='/dashboard-mhs'" style="cursor: pointer;">
+            <div class="text-center sidebar-header" onclick="location.href='/dashboard-mhs'"
+                style="cursor: pointer;">
                 <div class="text-center sidebar-icon">
                     <img class="sidebar-icon-image" src="{{ asset('images/logounit.png') }}" />
                 </div>
@@ -31,7 +31,7 @@
             <ul class="sidebar-nav">
                 <li class="sidebar-brand text-center" style="margin-bottom: 180px"></li>
                 <li>
-                    <div class="sidebar-link" onclick="location.href='/ukm'">
+                    <div class="sidebar-link active" onclick="location.href='/ukm'">
                         <div class="sidebar-link-text">UKM</div>
                     </div>
                     <div class="sidebar-link" onclick="location.href='/event'">
@@ -54,9 +54,9 @@
         <!-- Sidebar -->
 
         <!-- Header -->
-        <div class="header-tel-u">
+        <div class="header-tel-u" style="height: 250px;">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-lg-6">
                     <svg width="514" height="250" viewBox="0 0 714 329" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <rect x="362.622" y="283.32" width="113.678" height="113.678"
@@ -98,106 +98,54 @@
                         </defs>
                     </svg>
                 </div>
-                <div class="col-md-1"></div>
+                <div class="col-lg-1"></div>
             </div>
             <div class="right-logo-outer"></div>
             <img class="right-profilepict-image" src="{{ Auth::user()->foto }}" />
-            <div class="svg-container">
-                <svg style="z-index: 1;" width="473" height="400" viewBox="0 0 473 486" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <rect x="4.87122" y="62.1997" width="113.678" height="113.678"
-                        transform="rotate(-48.4743 4.87122 62.1997)" fill="url(#paint0_linear_1_8)" />
-                    <rect x="187.886" y="51.0886" width="113.678" height="113.678"
-                        transform="rotate(-48.4743 187.886 51.0886)" fill="url(#paint1_linear_1_8)" />
-                    <rect x="370.901" y="39.9775" width="113.678" height="113.678"
-                        transform="rotate(-48.4743 370.901 39.9775)" fill="url(#paint2_linear_1_8)" />
-                    <rect x="15.3157" y="234.234" width="113.678" height="113.678"
-                        transform="rotate(-48.4743 15.3157 234.234)" fill="url(#paint3_linear_1_8)" />
-                    <rect x="198.331" y="223.123" width="113.678" height="113.678"
-                        transform="rotate(-48.4743 198.331 223.123)" fill="url(#paint4_linear_1_8)" />
-                    <rect x="381.346" y="212.011" width="113.678" height="113.678"
-                        transform="rotate(-48.4743 381.346 212.011)" fill="url(#paint5_linear_1_8)" />
-                    <rect x="25.6713" y="404.804" width="113.678" height="113.678"
-                        transform="rotate(-48.4743 25.6713 404.804)" fill="url(#paint6_linear_1_8)" />
-                    <rect x="208.686" y="393.692" width="113.678" height="113.678"
-                        transform="rotate(-48.4743 208.686 393.692)" fill="url(#paint7_linear_1_8)" />
-                    <rect x="391.701" y="382.581" width="113.678" height="113.678"
-                        transform="rotate(-48.4743 391.701 382.581)" fill="url(#paint8_linear_1_8)" />
-                    <defs>
-                        <linearGradient id="paint0_linear_1_8" x1="-11.8953" y1="8.81534" x2="161.94"
-                            y2="227.488" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#D86636" />
-                            <stop offset="1" stop-color="#D86636" stop-opacity="0" />
-                        </linearGradient>
-                        <linearGradient id="paint1_linear_1_8" x1="171.12" y1="-2.29574" x2="344.954"
-                            y2="216.377" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#D86636" />
-                            <stop offset="1" stop-color="#D86636" stop-opacity="0" />
-                        </linearGradient>
-                        <linearGradient id="paint2_linear_1_8" x1="354.135" y1="-13.4068" x2="527.969"
-                            y2="205.265" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#D86636" />
-                            <stop offset="1" stop-color="#D86636" stop-opacity="0" />
-                        </linearGradient>
-                        <linearGradient id="paint3_linear_1_8" x1="-1.45084" y1="180.849" x2="172.384"
-                            y2="399.522" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#D86636" />
-                            <stop offset="1" stop-color="#D86636" stop-opacity="0" />
-                        </linearGradient>
-                        <linearGradient id="paint4_linear_1_8" x1="181.564" y1="169.738" x2="355.399"
-                            y2="388.41" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#D86636" />
-                            <stop offset="1" stop-color="#D86636" stop-opacity="0" />
-                        </linearGradient>
-                        <linearGradient id="paint5_linear_1_8" x1="364.579" y1="158.627" x2="538.414"
-                            y2="377.299" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#D86636" />
-                            <stop offset="1" stop-color="#D86636" stop-opacity="0" />
-                        </linearGradient>
-                        <linearGradient id="paint6_linear_1_8" x1="8.90475" y1="351.419" x2="182.74"
-                            y2="570.092" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#D86636" />
-                            <stop offset="1" stop-color="#D86636" stop-opacity="0" />
-                        </linearGradient>
-                        <linearGradient id="paint7_linear_1_8" x1="191.92" y1="340.308" x2="365.755"
-                            y2="558.98" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#D86636" />
-                            <stop offset="1" stop-color="#D86636" stop-opacity="0" />
-                        </linearGradient>
-                        <linearGradient id="paint8_linear_1_8" x1="374.935" y1="329.197" x2="548.77"
-                            y2="547.869" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#D86636" />
-                            <stop offset="1" stop-color="#D86636" stop-opacity="0" />
-                        </linearGradient>
-                    </defs>
-                </svg>
-            </div>
-
-            <h1 class="text-title">Halo, {{ auth()->user()->nama }}</h1>
             <div class="row">
-                <div class="col-md-8"></div>
+                <div class="col-lg-8"></div>
             </div>
         </div>
-        <!-- End of header -->
+        <!-- Header -->
 
         <!-- isi -->
-        <h4>Apa yang baru?</h4>
+        <h4>Ikut yang mana?</h4>
         <div id="page-content-wrapper" style="position: absolute;">
-            <div class="container-fluid">
+            <div class="container-fluid align-items-center">
                 <div class="row">
-                    <div class="col-3">
-                        <img src="{{ asset('images/event1-event.png') }}" class="event1" style="width: 100%;"
-                            alt="" onclick="location.href='detail_event.html'">
+                    <div class="col-2" style="margin-left: 40px;">
+                        <img src="{{ asset('images/ukm1-ukm.png') }}" class="ukm1" style="width: 100%;" alt=""
+                            onclick="location.href=''">
                     </div>
-                    <div class="col-3">
-                        <img src="{{ asset('images/event2.png') }}" class="event2" style="width: 100%;"
-                            alt="">
+                    <div class="col-2" style="margin-left: 40px;">
+                        <img src="{{ asset('images/ukm2-ukm.png') }}" class="ukm2" style="width: 100%;" alt=""
+                            onclick="location.href=''">
                     </div>
-                    <div class="col-2 right-ukm">
-                        <img src="{{ asset('images/ukm1kanan.png') }}" class="right-ukm1" style="width: 100%;"
-                            alt="">
-                        <img src="{{ asset('images/logoukmkanan2.png') }}" class="right-ukm2" style="width: 100%;"
-                            alt="">
+                    <div class="col-2" style="margin-left: 40px;">
+                        <img src="{{ asset('images/ukm3-ukm.png') }}" class="ukm3" style="width: 100%;" alt=""
+                            onclick="location.href=''">
+                    </div>
+                    <div class="col-2" style="margin-left: 40px;">
+                        <img src="{{ asset('images/ukm4-ukm.png') }}" class="ukm4" style="width: 100%;" alt=""
+                            onclick="location.href=''">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-2" style="margin-left: 40px;">
+                        <img src="{{ asset('images/ukm5-ukm.png') }}" class="ukm5" style="width: 100%;" alt=""
+                            onclick="location.href=''">
+                    </div>
+                    <div class="col-2" style="margin-left: 40px;">
+                        <img src="{{ asset('images/ukm6-ukm.png') }}" class="ukm6" style="width: 100%;" alt=""
+                            onclick="location.href=''">
+                    </div>
+                    <div class="col-2" style="margin-left: 40px;">
+                        <img src="{{ asset('images/ukm7-ukm.png') }}" class="ukm7" style="width: 100%;" alt=""
+                            onclick="location.href='daftar.html'">
+                    </div>
+                    <div class="col-2" style="margin-left: 40px;">
+                        <img src="{{ asset('images/ukm8-ukm.png') }}" class="ukm8" style="width: 100%;" alt=""
+                            onclick="location.href=''">
                     </div>
                 </div>
             </div>
@@ -209,7 +157,7 @@
             <div class="footer-left">
                 <h1><strong>Kontak</strong></h1>
                 <div class="img_">
-                    <img src="{{ asset('images/footer.png') }}" width="300px" alt="">
+                    <img src="{{ asset('footer.png') }}" width="300px" alt="">
                 </div><br>
                 <div>
                     <i class="fa fa-map-marker"></i>
@@ -249,10 +197,14 @@
     <!--  Wrapper sls -->
 
 
+
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
     </script>
     <script type="javascript"></script>
+    <script src="{{ asset('js/index.js') }}"></script>
 </body>
 
 </html>

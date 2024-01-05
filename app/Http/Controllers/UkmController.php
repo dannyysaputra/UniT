@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Pengurus;
 use App\Models\Ukm;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UkmController extends Controller
 {
@@ -16,6 +17,74 @@ class UkmController extends Controller
     public function loginUkm()
     {
         return view('ukm.auth.login');
+    }
+
+    public function dashboardUkm()
+    {
+        $ukm = Auth::guard('ukm')->user();
+
+        if (!$ukm) {
+            return redirect('/login-ukm');
+        }
+
+        $penguruses = $ukm->penguruses;
+        $events = $ukm->events;
+
+        return view('ukm.dashboard', [
+            'data' => $ukm,
+            'penguruses' => $penguruses,
+            'events' => $events
+        ]);
+    }
+
+    public function editUkm()
+    {
+        $ukm = Auth::guard('ukm')->user();
+
+        if (!$ukm) {
+            return redirect('/login-ukm');
+        }
+
+        $penguruses = $ukm->penguruses;
+
+        return view('ukm.edit', [
+            'data' => $ukm,
+            'penguruses' => $penguruses
+        ]);
+    }
+
+    public function updateUkm(Request $request)
+    {
+
+        $ukm = Auth::guard('ukm')->user();
+
+        // Mengambil data dari form yang dikirimkan
+        $validatedData = $request->validate([
+            'deskripsi' => 'required',
+            'link_grup' => 'required',
+            'logo' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Contoh validasi untuk file gambar
+        ]);
+
+        // Memperbarui data UKM sesuai data yang dikirimkan
+        $update['deskripsi'] = $validatedData['deskripsi'];
+        $update['link_grup'] = $validatedData['link_grup'];
+
+        // Memeriksa apakah ada file foto yang di-upload
+        if ($request->hasFile('logo')) {
+            $logoPath = $request->file('logo')->store('public/logos');
+            $logoPath = str_replace('public/', 'storage/', $logoPath);
+            $update['logo'] = $logoPath;
+        }
+
+        // Menyimpan perubahan pada model UKM
+        $ukm->update($update);
+
+        return redirect('/dashboard-ukm')->with('message', 'Data berhasil diperbarui!');
+    }
+
+    public function viewDaftarPendaftar()
+    {
+        return view('ukm.daftar-pendaftar');
     }
 
     public function createUkm(Request $request)
@@ -36,7 +105,7 @@ class UkmController extends Controller
                 'nama_pengurus.*' => 'required',
                 'jabatan_pengurus.*' => 'required',
                 'jurusan_pengurus.*' => 'required',
-                
+
             ],
             [
                 'nama.required' => 'Nama tidak boleh kosong',
@@ -104,6 +173,33 @@ class UkmController extends Controller
         dd($request->all());
 
         return redirect('/login-ukm')->with('success', 'Daftar akun berhasil. Silahkan login!');
+    }
+
+    public function authUkm(Request $request)
+    {
+        $credentials = $request->validate(
+            [
+                'email' => 'required|email',
+                'password' => 'required',
+            ]
+        );
+
+        if (Auth::guard('ukm')->attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect('/dashboard-ukm');
+        }
+
+        return back()->with('failed', 'Percobaan masuk gagal. Silahkan coba lagi!');
+    }
+
+    public function signout(Request $request)
+    {
+        Auth::guard('ukm')->logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/');
     }
 
     public function createPengurus(Request $request)

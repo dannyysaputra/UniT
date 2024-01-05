@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>register ukm</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
@@ -32,7 +33,7 @@
 
                                 <div class="group8">
                                     <input required="true" class="main-input8 @error('nama') is-invalid @enderror"
-                                        type="text" name="nama" />
+                                        type="text" name="nama" id="nama" />
                                     <span class="highlight-span8"></span>
                                     <label class="lebal-email8">Nama</label>
                                     @error('nama')
@@ -45,7 +46,7 @@
                                 <div class="container-8">
                                     <div class="group8">
                                         <input required="true" class="main-input8 @error('email') is-invalid @enderror"
-                                            type="email" name="email" />
+                                            type="email" name="email" id="email"/>
                                         <span class="highlight-span8"></span>
                                         <label class="lebal-email8">Email</label>
                                         @error('email')
@@ -60,7 +61,7 @@
                                     <div class="group8">
                                         <input required="true8"
                                             class="main-input8 @error('password') is-invalid @enderror" type="password"
-                                            name="password" />
+                                            name="password" id="password"/>
                                         <span class="highlight-span8"></span>
                                         <label class="lebal-email8">Password</label>
                                         @error('password')
@@ -75,7 +76,7 @@
                                     <div class="group8">
                                         <input required="true8"
                                             class="main-input8 @error('confirm-password') is-invalid @enderror"
-                                            type="password" name="confirm-password" />
+                                            type="password" name="confirm-password" id="confirm-password"/>
                                         <span class="highlight-span8"></span>
                                         <label class="lebal-email8">Confirm Password</label>
                                         @error('consfirm-password')
@@ -90,7 +91,7 @@
                                 <div class="group8">
                                     <label class="lebal-email9">Deskripsi Organisasi</label>
                                     <input required="true8" class="main-input9 @error('deskripsi') is-invalid @enderror"
-                                        type="text" name="deskripsi" />
+                                        type="text" name="deskripsi" id="deskripsi"/>
                                     <span class="highlight-span8"></span>
                                     @error('deskripsi')
                                         <div class="invalid-feedback">
@@ -102,7 +103,7 @@
                                 <div class="container-8">
                                     <div class="group8">
                                         <input required="true8" class="main-input8 @error('visi') is-invalid @enderror"
-                                            type="text" name="visi" />
+                                            type="text" name="visi" id="visi"/>
                                         <span class="highlight-span8"></span>
                                         <label class="lebal-email8">Visi Organisasi</label>
                                         @error('visi')
@@ -116,7 +117,7 @@
                                 <div class="group8">
                                     <label class="lebal-email9">Misi Organisasi</label>
                                     <input required="true8" class="main-input9 @error('misi') is-invalid @enderror"
-                                        type="text" name="misi" />
+                                        type="text" name="misi" id="misi"/>
                                     <span class="highlight-span8"></span>
                                     @error('misi')
                                         <div class="invalid-feedback">
@@ -147,7 +148,7 @@
                                                 <p class="text-white">Drag and Drop OR</p>
                                                 <span class="browse-button"><b>Browse</b></span>
                                                 <input id="logo" class="@error('logo') is-invalid @enderror"
-                                                    type="file" name="logo" />
+                                                    type="file" name="logo" id="logo"/>
                                             </div>
                                         </label>
                                         @error('logo')
@@ -170,7 +171,7 @@
                                     <label class="lebal-email9">Link Grup</label>
                                     <input required="true8"
                                         class="main-input9 @error('link_grup') is-invalid @enderror" type="text"
-                                        name="link_grup" />
+                                        name="link_grup" id="link_grup"/>
                                     <span class="highlight-span8"></span>
                                     @error('link_grup')
                                         <div class="invalid-feedback">
@@ -183,6 +184,10 @@
                                     <label for="kepengurusan" class="lebal-email9 custom-label">Struktur dan Bagan
                                         Kepengurusan Organisasi</label>
                                     <div class="row">
+                                        <input type="hidden" name="ava_pengurus_utama[]">
+                                        <input type="hidden" name="nama_pengurus_utama[]">
+                                        <input type="hidden" name="jabatan_pengurus_utama[]">
+                                        <input type="hidden" name="jurusan_pengurus_utama[]">
                                         <div class="col-2" id="daftar_pengurus"></div>
 
                                         <div class="col-2">
@@ -226,7 +231,7 @@
                                             <p class="text-white">Drag and Drop OR</p>
                                             <span class="browse-button"><b>Browse</b><input id="pengesahan"
                                                     type="file" class="@error('pengesahan') is-invalid @enderror"
-                                                    name="pengesahan" /></span>
+                                                    name="pengesahan" id="pengesahan"/></span>
                                             {{-- <input id="file" type="file"
                                                 class="@error('pengesahan') is-invalid @enderror"
                                                 name="pengesahan" /> --}}
@@ -346,6 +351,34 @@
             })
         }
 
+        const form = document.querySelector('form');
+
+        // form.addEventListener('submit', (e) => {
+        //     e.preventDefault();
+
+        //     console.log(tempMembers);
+
+        //     const formData = new FormData(form);
+
+        //     tempMembers.forEach((member, index) => {
+        //         formData.append(`ava_pengurus_utama[${index}]`, member.ava);
+        //         formData.append(`nama_pengurus_utama[${index}]`, member.nama);
+        //         formData.append(`jabatan_pengurus_utama[${index}]`, member.jabatan);
+        //         formData.append(`jurusan_pengurus_utama[${index}]`, member.jurusan);
+        //     });
+
+        //     for (item of formData) {
+        //         console.log(item[0], item[1]);
+        //     }
+
+        //     fetch('http://localhost:8000/create-ukm', {
+        //             method: "POST",
+        //             body: formData,
+        //         })
+        //         .then(res => res.json())
+        //         .then(res => console.log(res));
+        // })
+
         document.getElementById('simpan_pengurus').addEventListener('click', function() {
             // Ambil nilai-nilai dari form modal
             let avaInput = document.getElementById('ava_pengurus_1');
@@ -374,19 +407,19 @@
             daftarPengurus.innerHTML += newCard;
 
             addTemporaryMember(ava, nama, jabatan, jurusan);
-            console.log(tempMembers);
+            // console.log(tempMembers);
 
             // Buat elemen div baru untuk setiap anggota dan isikan nilainya
-            let newMember = document.createElement('div');
-            newMember.innerHTML = `
-                <input type="file" name="ava_pengurus_utama[]">
-                <input type="hidden" name="nama_pengurus_utama[]" value="${nama}">
-                <input type="hidden" name="jabatan_pengurus_utama[]" value="${jabatan}">
-                <input type="hidden" name="jurusan_pengurus_utama[]" value="${jurusan}">
-            `;
+            // let newMember = document.createElement('div');
+            // newMember.innerHTML = `
+        //     <input type="file" name="ava_pengurus_utama[]">
+        //     <input type="hidden" name="nama_pengurus_utama[]" value="${nama}">
+        //     <input type="hidden" name="jabatan_pengurus_utama[]" value="${jabatan}">
+        //     <input type="hidden" name="jurusan_pengurus_utama[]" value="${jurusan}">
+        // `;
 
             // Tambahkan anggota baru ke dalam formulir utama
-            document.getElementById('groupUtama').appendChild(newMember);
+            // document.getElementById('groupUtama').appendChild(newMember);
 
             // Bersihkan nilai-nilai formulir modal untuk input selanjutnya
             avaInput.value = '';
@@ -395,25 +428,25 @@
             document.getElementById('jurusan_pengurus_1').value = '';
 
             // Ambil formulir utama dan buat FormData
-            let mainForm = document.getElementById('formUtama');
-            let formData = new FormData(mainForm);
+            // let mainForm = document.getElementById('formUtama');
+            // let formData = new FormData(mainForm);
 
-            // Tambahkan data anggota ke FormData
-            formData.append(`ava_pengurus_utama[]`, ava);
+            // // Tambahkan data anggota ke FormData
+            // formData.append(`ava_pengurus_utama[]`, ava);
 
-            // Kirim FormData menggunakan fetch
-            fetch(mainForm.action, {
-                    method: mainForm.method,
-                    body: formData
-                })
-                .then(response => response.json())
-                .then(data => {
-                    // Handle response data if needed
-                    console.log(data);
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
+            // // Kirim FormData menggunakan fetch
+            // fetch(mainForm.action, {
+            //         method: mainForm.method,
+            //         body: formData
+            //     })
+            //     .then(response => response.json())
+            //     .then(data => {
+            //         // Handle response data if needed
+            //         console.log(data);
+            //     })
+            //     .catch(error => {
+            //         console.error('Error:', error);
+            //     });
         });
 
 
@@ -482,56 +515,114 @@
         //         });
         // });
 
-        // document.getElementById('submitRegister').addEventListener('click', function() {
-        //     // Ambil nilai-nilai dari form modal
-        //     let ava = document.getElementById('ava_pengurus_1').files[0];
-        //     let nama = document.getElementById('nama_pengurus_1').value;
-        //     let jabatan = document.getElementById('jabatan_pengurus_1').value;
-        //     let jurusan = document.getElementById('jurusan_pengurus_1').value;
+        document.getElementById('submitRegister').addEventListener('click', function(event) {
+            // Ambil nilai-nilai dari form modal
+            // let ava = document.getElementById('ava_pengurus_1').files[0];
+            // let nama = document.getElementById('nama_pengurus_1').value;
+            // let jabatan = document.getElementById('jabatan_pengurus_1').value;
+            // let jurusan = document.getElementById('jurusan_pengurus_1').value;
 
-        //     // Masukkan nilai-nilai dari formulir modal ke dalam formulir utama
-        //     // document.getElementById('ava_pengurus_utama').files[0] = tempMembers.map(member => member.ava);
-        //     // document.getElementById('nama_pengurus_utama').value = JSON.stringify([nama]);
-        //     // document.getElementById('jabatan_pengurus_utama').value = JSON.stringify([jabatan]);
-        //     // document.getElementById('jurusan_pengurus_utama').value = JSON.stringify([jurusan]);
+            // Masukkan nilai-nilai dari formulir modal ke dalam formulir utama
+            // document.getElementById('ava_pengurus_utama').files[0] = tempMembers.map(member => member.ava);
+            // document.getElementById('nama_pengurus_utama').value = JSON.stringify([nama]);
+            // document.getElementById('jabatan_pengurus_utama').value = JSON.stringify([jabatan]);
+            // document.getElementById('jurusan_pengurus_utama').value = JSON.stringify([jurusan]);
 
 
-        //     // Submit formulir utama setelah data ditambahkan
-        //     // document.getElementById('formUtama').submit();
+            // Submit formulir utama setelah data ditambahkan
+            // document.getElementById('formUtama').submit();
 
-        // let formData = new FormData(document.getElementById('formUtama'));
+            // let formData = new FormData(document.getElementById('formUtama'));
 
-        // // Tambahkan data anggota ke FormData
-        // tempMembers.forEach((member, index) => {
-        //     formData.append(`ava_pengurus_utama[${index}]`, member.ava);
-        //     formData.append(`nama_pengurus_utama[${index}]`, member.nama);
-        //     formData.append(`jabatan_pengurus_utama[${index}]`, member.jabatan);
-        //     formData.append(`jurusan_pengurus_utama[${index}]`, member.jurusan);
-        // });
+            // Tambahkan data anggota ke FormData
+            // tempMembers.forEach((member, index) => {
+            //     formData.append(`ava_pengurus_utama[${index}]`, member.ava);
+            //     formData.append(`nama_pengurus_utama[${index}]`, member.nama);
+            //     formData.append(`jabatan_pengurus_utama[${index}]`, member.jabatan);
+            //     formData.append(`jurusan_pengurus_utama[${index}]`, member.jurusan);
+            // });
 
-        // //     // Tambahkan data anggota ke FormData
-        // //     formData.append('ava_pengurus_utama', tempMembers.map(member => member.ava));
-        // //     formData.append('nama_pengurus_utama', JSON.stringify(tempMembers.map(member => member.nama)));
-        // //     formData.append('jabatan_pengurus_utama', JSON.stringify(tempMembers.map(member => member
-        // //         .jabatan)));
-        // //     formData.append('jurusan_pengurus_utama', JSON.stringify(tempMembers.map(member => member
-        // //         .jurusan)));
+            //     // Tambahkan data anggota ke FormData
+            //     formData.append('ava_pengurus_utama', tempMembers.map(member => member.ava));
+            //     formData.append('nama_pengurus_utama', JSON.stringify(tempMembers.map(member => member.nama)));
+            //     formData.append('jabatan_pengurus_utama', JSON.stringify(tempMembers.map(member => member
+            //         .jabatan)));
+            //     formData.append('jurusan_pengurus_utama', JSON.stringify(tempMembers.map(member => member
+            //         .jurusan)));
 
-        // //     // Kirim FormData sebagai bagian dari request submit
-        // //     // Pastikan action dan method pada formUtama disetel dengan benar
-        // fetch(document.getElementById('formUtama').action, {
-        //         method: document.getElementById('formUtama').method,
-        //         body: formData
-        //     })
-        //     .then(response => response.json())
-        //     .then(data => {
-        //         // Handle response data if needed
-        //         console.log(data);
-        //     })
-        //     .catch(error => {
-        //         console.error('Error:', error);
-        //     });
-        // });
+            //     // Kirim FormData sebagai bagian dari request submit
+            //     // Pastikan action dan method pada formUtama disetel dengan benar
+            event.preventDefault();
+
+            console.log(tempMembers);
+
+            const formData = new FormData(form);
+
+            formData.append('nama', document.getElementById('nama').value);
+            formData.append('email', document.getElementById('email').value);
+            formData.append('password', document.getElementById('password').value);
+            formData.append('confirm-password', document.getElementById('confirm-password').value);
+            formData.append('visi', document.getElementById('visi').value);
+            formData.append('misi', document.getElementById('misi').value);
+            formData.append('logo', document.getElementById('logo').files[0]);
+            formData.append('link_grup', document.getElementById('link_grup').value);
+            formData.append('pengesahan', document.getElementById('pengesahan').files[0]);
+
+            tempMembers.forEach((member, index) => {
+                formData.append(`ava_pengurus_utama[${index}]`, member.ava);
+                formData.append(`nama_pengurus_utama[${index}]`, member.nama);
+                formData.append(`jabatan_pengurus_utama[${index}]`, member.jabatan);
+                formData.append(`jurusan_pengurus_utama[${index}]`, member.jurusan);
+            });
+
+            // for (item of formData) {
+            //     console.log(item[0], item[1]);
+            // }
+
+            console.log(formData);
+
+            // Fetch API to send AJAX requests with CSRF token header
+            const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+            // const res = Object.fromEntries(formData);
+            // const payload = JSON.stringify(res);
+
+            // console.log(payload);
+
+            fetch('/create-ukm', {
+                    method: "POST",
+                    body: formData,
+                    headers: {
+                        // 'Content-Type': 'application/json',
+                        // 'Accept': 'application/json',
+                        'url': '/create-ukm',
+                        'X-CSRF-TOKEN': csrfToken
+                    },
+                })
+                .then(res => res.json())
+                // .then(res => console.log(res));
+                .then(data => {
+                    console.log(data)
+                });
+
+
+            // fetch(document.getElementById('formUtama').action, {
+            //         method: document.getElementById('formUtama').method,
+            //         body: formData,
+            //         headers: {
+            //             'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute(
+            //                 'content')
+            //         }
+            //     })
+            //     .then(response => response.json())
+            //     .then(data => {
+            //         // Handle response data if needed
+            //         console.log(data);
+            //     })
+            //     .catch(error => {
+            //         console.error('Error:', error);
+            //     });
+        });
     </script>
 </body>
 
