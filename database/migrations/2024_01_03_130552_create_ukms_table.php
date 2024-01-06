@@ -21,23 +21,9 @@ return new class extends Migration
             $table->text('misi');
             $table->string('logo');
             $table->string('link_grup');
+            $table->string('instagram');
+            $table->string('telepon');
             $table->string('pengesahan');
-            // $table->string('ava_pengurus_1');
-            // $table->string('nama_pengurus_1');
-            // $table->string('jabatan_pengurus_1');
-            // $table->string('jurusan_pengurus_1');
-            // $table->string('ava_pengurus_2');
-            // $table->string('nama_pengurus_2');
-            // $table->string('jabatan_pengurus_2');
-            // $table->string('jurusan_pengurus_2');
-            // $table->string('ava_pengurus_3');
-            // $table->string('nama_pengurus_3');
-            // $table->string('jabatan_pengurus_3');
-            // $table->string('jurusan_pengurus_3');
-            // $table->string('ava_pengurus_4');
-            // $table->string('nama_pengurus_4');
-            // $table->string('jabatan_pengurus_4');
-            // $table->string('jurusan_pengurus_4');
             $table->timestamps();
         });
     }

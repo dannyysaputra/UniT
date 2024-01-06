@@ -39,6 +39,30 @@
         </div>
         <div class="container-1">
             <div class="group">
+                <input required="true" name="nim" class="main-input @error('nim') is-invalid @enderror" type="text">
+                <span class="highlight-span"></span>
+                <label class="lebal-email">NIM</label>
+                @error('nim')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
+            </div>
+        </div>
+        <div class="container-1">
+            <div class="group">
+                <input required="true" name="jurusan" class="main-input @error('jurusan') is-invalid @enderror" type="text">
+                <span class="highlight-span"></span>
+                <label class="lebal-email">Jurusan</label>
+                @error('jurusan')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
+            </div>
+        </div>
+        <div class="container-1">
+            <div class="group">
                 <label for="lebal-email" style="color: white">Foto</label>
                 <input type="file" name="foto" class="main-input @error('foto') is-invalid @enderror">
                 <span class="highlight-span"></span>
