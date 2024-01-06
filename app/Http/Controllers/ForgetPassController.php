@@ -52,24 +52,26 @@ class ForgetPassController extends Controller
         $email = $user->email;
         $this->sendOtp($user);
 
-        return view('verification', compact($email));
+        return view('mahasiswa.auth.kodeOtp', ['email' => $email]);
     }
 
     public function verifiedOtp(Request $request)
     {
         $user = User::where('email', $request->email)->first();
+        $otp = OtpVerification::all();
         $otpData = OtpVerification::where('otp', $request->otp)->first();
 
+        // dd($otpData);
         if (!$otpData) {
-            return back()->with('failed', 'You entered wrong otp!');
+            return redirect('/login-mahasiswa')->with('failed', 'You entered wrong otp!');
         } else {
             $currentTime = time();
-            $time = $otpData->created_at;
+            $time = $otpData->created_at->timestamp;
 
             if ($currentTime >= $time && $time >= $currentTime - (90 + 5)) {
-                return redirect('/change-password')->with('failed', 'You entered wrong otp!');
+                return redirect('/change-password')->with('success', 'Change password!');
             } else {
-                return back()->with('failed', 'You OTP expired!');
+                return redirect('/login')->with('failed', 'You OTP expired!');
             }
         }
     }
