@@ -97,7 +97,7 @@
                                     <label class="lebal-email8">Password</label>
                                 </div>
                             </div>
-                            <small class="text-s"></small><a style="text-decoration: none;" href="forgetpass.html"><span
+                            <small class="text-s"></small><a style="text-decoration: none;" href="/forget-pass"><span
                                     style="color: #000">Forgot password?</a></span></small>
                             <p class="text-white text-center mt-5" style="cursor: pointer;">
                                 Belum punya akun? <a style="text-decoration: none;"href="/register-mahasiswa"><span
