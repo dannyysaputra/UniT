@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\ForgetPassController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\MendaftarController;
 use App\Http\Controllers\UkmController;
@@ -38,6 +39,14 @@ Route::middleware(['auth'])->group(function () {
 
 Route::get('/', [RegisterController::class, 'index']);
 Route::get('/login', [LoginController::class, 'index']);
+
+Route::get('/forget-pass', [ForgetPassController::class, 'index']);
+Route::post('/forget-password', [ForgetPassController::class, 'forgetPassword']);
+Route::get('/verification/{id}', [ForgetPassController::class, 'verification']);
+Route::post('/verified', [ForgetPassController::class, 'verifiedOtp']);
+Route::post('/resend', [ForgetPassController::class, 'resendOtp']);
+Route::get('/ganti-password', [ForgetPassController::class, 'viewChangePassword']);
+Route::post('/submit-ganti-password', [ForgetPassController::class, 'changePassword']);
 
 Route::get('/login-mahasiswa', [LoginController::class, 'loginMahasiswa']);
 Route::any('/sign-in', [LoginController::class, 'authenticate']);
