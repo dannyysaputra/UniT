@@ -17,6 +17,7 @@ class ForgetPassController extends Controller
     public function forgetPassword(Request $request)
     {
         $user = User::where('email', $request->email)->first();
+        // $this->changePassword($request, $user);
 
         return redirect("/verification/" . $user->id);
     }
@@ -57,11 +58,8 @@ class ForgetPassController extends Controller
 
     public function verifiedOtp(Request $request)
     {
-        $user = User::where('email', $request->email)->first();
-        $otp = OtpVerification::all();
         $otpData = OtpVerification::where('otp', $request->otp)->first();
 
-        // dd($otpData);
         if (!$otpData) {
             return redirect('/login-mahasiswa')->with('failed', 'You entered wrong otp!');
         } else {
@@ -69,11 +67,43 @@ class ForgetPassController extends Controller
             $time = $otpData->created_at->timestamp;
 
             if ($currentTime >= $time && $time >= $currentTime - (90 + 5)) {
-                return redirect('/change-password')->with('success', 'Change password!');
+                if ($request->has('email')) {
+                    $request->session()->put('email_for_password_reset', $request->email);
+                    return redirect('/ganti-password');
+                } else {
+                    // Handle jika tidak ada email yang diberikan pada request
+                    return redirect('/login-mahasiswa')->with('failed', 'Invalid email for password reset!');
+                }
             } else {
-                return redirect('/login')->with('failed', 'You OTP expired!');
+                return redirect('/login-mahasiswa')->with('failed', 'You OTP expired!');
             }
         }
+    }
+
+    public function viewChangePassword(Request $request)
+    {
+        $email = $request->session()->get('email_for_password_reset');
+        return view('mahasiswa.auth.ganti-password', ['email' => $email]);
+    }
+
+
+    public function changePassword(Request $request)
+    {
+        $user = User::where('email', $request->email)->first();
+
+        // dd($request->all());
+
+        // Mengambil data dari form yang dikirimkan
+        $validatedData = $request->validate([
+            'password' => 'required|min:8|same:confirm-password',
+            'confirm-password' => 'required|min:8',
+        ]);
+
+        $update['password'] = $validatedData['password'];
+
+        $user->update($update);
+
+        return redirect('/login-mahasiswa')->with('message', 'Data berhasil diperbarui!');
     }
 
     public function resendOtp(Request $request)

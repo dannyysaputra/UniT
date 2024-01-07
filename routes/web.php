@@ -45,6 +45,8 @@ Route::post('/forget-password', [ForgetPassController::class, 'forgetPassword'])
 Route::get('/verification/{id}', [ForgetPassController::class, 'verification']);
 Route::post('/verified', [ForgetPassController::class, 'verifiedOtp']);
 Route::post('/resend', [ForgetPassController::class, 'resendOtp']);
+Route::get('/ganti-password', [ForgetPassController::class, 'viewChangePassword']);
+Route::post('/submit-ganti-password', [ForgetPassController::class, 'changePassword']);
 
 Route::get('/login-mahasiswa', [LoginController::class, 'loginMahasiswa']);
 Route::any('/sign-in', [LoginController::class, 'authenticate']);

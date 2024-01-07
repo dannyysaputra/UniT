@@ -21,6 +21,7 @@
             <input type="text" id="digit-4" name="digit-4" data-next="digit-5" data-previous="digit-3" /> --}}
         <div class="group8">
             {{-- <label class="lebal-email9">Deskripsi Organisasi</label> --}}
+            <input type="hidden" name="email" id="email" value="{{ $email }}">
             <input required="true8" class="main-input9 @error('otp') is-invalid @enderror" type="text"
                 name="otp" id="otp" />
             <span class="highlight-span8"></span>
